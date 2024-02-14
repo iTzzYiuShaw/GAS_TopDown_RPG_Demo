@@ -13,6 +13,12 @@ AAuraBase::AAuraBase()
 	Weapon = CreateDefaultSubobject<USkeletalMeshComponent>("Weapon");
 	Weapon->SetupAttachment(GetMesh(), FName("WeaponHandSocket"));
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+}
+
+UAbilitySystemComponent* AAuraBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
 }
 
 void AAuraBase::BeginPlay()

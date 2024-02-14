@@ -27,10 +27,14 @@ void AAura_PlayerController::BeginPlay()
 	//Check if it's valid
 	check(AuraContext);
 
-	
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem< UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	check(Subsystem);
-	Subsystem->AddMappingContext(AuraContext, 0);
+	
+	//Subsystem is not valid unless it's on local machine
+	if (Subsystem)
+	{
+		Subsystem->AddMappingContext(AuraContext, 0);
+	}
+	
 
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;
@@ -44,7 +48,6 @@ void AAura_PlayerController::BeginPlay()
 void AAura_PlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-
 
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
 
