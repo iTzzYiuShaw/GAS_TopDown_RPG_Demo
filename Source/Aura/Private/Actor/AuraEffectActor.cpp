@@ -53,7 +53,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	ECH.AddSourceObject(this);
 
 	//Apply Gameplay effects
-	FGameplayEffectSpecHandle ESH = TargetASC->MakeOutgoingSpec(GameplayEffectClass,1.f, ECH);
+	FGameplayEffectSpecHandle ESH = TargetASC->MakeOutgoingSpec(GameplayEffectClass, ActorLevel, ECH);
 	FActiveGameplayEffectHandle ActiveEffectHandle = TargetASC->ApplyGameplayEffectSpecToSelf(*ESH.Data.Get());
 
 

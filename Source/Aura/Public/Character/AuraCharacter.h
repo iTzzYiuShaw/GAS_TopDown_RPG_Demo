@@ -6,6 +6,7 @@
 #include "Character/AuraBase.h"
 #include "Player/AuraPlayerState.h"
 #include "Player/Aura_PlayerController.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "UI/HUD/AuraHud.h"
 #include "AbilitySystemComponent.h"
 #include "AuraCharacter.generated.h"
@@ -24,5 +25,5 @@ public:
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 private:
-	void InitAbilityActorInfo();
+	virtual void InitAbilityActorInfo() override;
 };
