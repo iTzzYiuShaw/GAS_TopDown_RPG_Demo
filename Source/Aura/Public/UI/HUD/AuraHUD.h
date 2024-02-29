@@ -13,6 +13,7 @@ class UAuraUserWidget;
 class UOverlayWidgetController;
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UAttributeWidgetController;
 
 struct FWidgetControllerParams;
 
@@ -22,10 +23,12 @@ class AURA_API AAuraHUD : public AHUD
 	GENERATED_BODY()
 public:
 
-	UPROPERTY()
-	TObjectPtr<UAuraUserWidget> OverlayWidget;
+
 
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
+
+	UAttributeWidgetController* GetAttributeWidgetController(const FWidgetControllerParams& WCParams);
+
 
 	void InitOverlay(APlayerController* PC, APlayerState* PS,
 		UAbilitySystemComponent* ASC, UAttributeSet* AS);
@@ -33,6 +36,8 @@ public:
 
 private:
 
+	UPROPERTY()
+	TObjectPtr<UAuraUserWidget> OverlayWidget;
 
 	UPROPERTY()
 	TObjectPtr<UOverlayWidgetController> OverlayWidgetController;
@@ -41,6 +46,14 @@ private:
 	TSubclassOf<UAuraUserWidget> OverlayWidgetClass;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf< UOverlayWidgetController> OverlayWidgetControllerClass;
+	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
+
+
+	UPROPERTY()
+	TObjectPtr<UAttributeWidgetController> MenuWidgetController;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UAttributeWidgetController> MenuWidgetControllerClass;
+
 
 };
